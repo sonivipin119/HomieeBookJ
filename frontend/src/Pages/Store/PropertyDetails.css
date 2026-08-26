@@ -1,0 +1,46 @@
+.react-calendar__month-view__weekdays abbr {
+    text-decoration: none !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+}
+.react-calendar__navigation__label__labelText.react-calendar__navigation__label__labelText--from{
+    font-size: 15px !important;
+    /*font-weight: 400 !important;*/
+}
+/*.react-calendar__navigation{*/
+/*    margin-bottom: -8px !important;*/
+/*}*/
+/*.react-calendar__navigation__label{*/
+/*    min-width: 26px !important;*/
+/*}*/
+.past-date {
+    background-color: white !important;
+    color: #999 !important;
+    border-radius: 25% !important;
+    margin: 1px !important;
+}
+.booked-date {
+    background-color: #ef4444 !important;
+    color: white !important;
+    border-radius: 25%;
+    margin: 1px !important;
+}
+
+.available-date {
+    background-color: #22c55e !important;
+    color: white !important;
+    border-radius: 25%;
+    margin: 1px !important;
+}
+.react-calendar {
+    background-color: white !important;
+    border: none !important;
+    width: 100% !important;
+}
+.react-calendar__month-view__days{
+    font-size: 15px !important;
+    justify-content: space-around !important;
+}
+/*.react-calendar__tile.react-calendar__month-view__days__day{*/
+/*    padding: 9px !important;*/
+/*}*/
