@@ -2,6 +2,8 @@ import {useEffect, useState} from 'react';
 import { useNavigate } from "react-router-dom";
 function login({setUser}) {
     const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const form = e.target;
@@ -69,7 +71,7 @@ function login({setUser}) {
                                 type="text"
                                 id="email"
                                 name="email"
-                                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:outline-none focus:ring-blue-500 focus:border-transparent transition duration-200"
                                 placeholder="Username/Email"
                                 required
                             />
@@ -78,14 +80,24 @@ function login({setUser}) {
                         <div>
                             <label htmlFor="password"
                                    className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                            <div className="flex flex-row w-full border border-gray-300 focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent rounded-lg overflow-hidden transition duration-200">
                             <input
-                                type="password"
+                                type={showPassword ? "text" : "password"}
                                 id="password"
                                 name="password"
-                                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                                className="flex-1 px-4 py-2 outline-none"
                                 placeholder="Enter your password"
                                 required
                             />
+                            <button type="button" onClick={() => setShowPassword(!showPassword)}
+                                    className="bg-gray-100 border-l border-gray-300 px-3 flex items-center justify-center hover:bg-gray-200 transition cursor-pointer">
+                                <img
+                                    src={showPassword ? "/hidden.png" : "/eye.png"}
+                                    alt={showPassword ? "Hide Password" : "Show Password"}
+                                    className="h-6 w-6"
+                                />
+                            </button>
+                            </div>
                         </div>
                     </div>
 
