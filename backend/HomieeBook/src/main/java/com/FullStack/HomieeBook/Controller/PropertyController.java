@@ -6,16 +6,11 @@ import com.FullStack.HomieeBook.Dto.propertyDto.PropertyListResponseDto;
 import com.FullStack.HomieeBook.Model.Property;
 import com.FullStack.HomieeBook.Service.ImageUploadService;
 import com.FullStack.HomieeBook.Service.PropertyService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import tools.jackson.databind.ObjectMapper;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/properties")
@@ -37,13 +32,21 @@ public class PropertyController {
                 .body(propertyService.addProperty(property));
     }
 
+//    @GetMapping
+//    public ResponseEntity<List<PropertyListResponseDto>> getAllProperties() {
+//        return ResponseEntity.ok(
+//                propertyService.getAllProperties()
+//        );
+//    }
     @GetMapping
-    public ResponseEntity<List<PropertyListResponseDto>> getAllProperties() {
+    public ResponseEntity<Page<PropertyListResponseDto>> getAllProperties(
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "8") int size
+    ) {
         return ResponseEntity.ok(
-                propertyService.getAllProperties()
+                propertyService.getAllProperties(page, size)
         );
     }
-
     @GetMapping("/{id}")
     public ResponseEntity<PropertyDetailsResponseDto> getPropertyById(
             @PathVariable Long id) {

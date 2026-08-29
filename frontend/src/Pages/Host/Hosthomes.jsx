@@ -1,7 +1,11 @@
 import {useEffect, useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useSearchParams} from 'react-router-dom';
 import { apiFetch } from '../../api/api'
+import Pagination from "../../Components/Pagination.jsx";
 function Hosthomes({user}) {
+    const [totalPages, setTotalPages] = useState(0);
+    const [searchParams] = useSearchParams();
+    const currentPageNum = Number(searchParams.get("page")) || 1;
     const handleDelete = async (id) => {
         const confirmDelete = window.confirm(
             "Are you sure you want to delete this property?"
@@ -33,10 +37,13 @@ function Hosthomes({user}) {
 
     const [properties, setProperties] = useState([]);
     useEffect(() =>{
-        apiFetch("http://localhost:8080/api/properties")
+        apiFetch(`http://localhost:8080/api/properties?page=${currentPageNum}&size=8`)
             .then(res => res.json())
-            .then(data => setProperties((data)))
-    },[]);
+            .then(data => {
+                setProperties(data.content)
+                setTotalPages(data.totalPages)
+            });
+    },[currentPageNum]);
     return (
         <div className="bg-blue-100 font-sans">
             <main className="container mx-auto p-8 ">
@@ -56,7 +63,7 @@ function Hosthomes({user}) {
                 <ul className="grid grid-cols-0 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {properties.map((property) => (
                         <div key={property.id}>
-                    <li class="home-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
+                    <li class="home-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-2xl hover:-translate-y-2.5">
                         <div class="relative h-48 overflow-hidden">
                             <img src={property.imageUrl} alt="" class="w-full h-full object-cover"/>
                         </div>
@@ -95,6 +102,12 @@ function Hosthomes({user}) {
                         </div>
                     ))}
                 </ul>
+                <Pagination
+                    route="/host/homelistpage"
+                    currentPageNum={currentPageNum}
+                    totalPages={totalPages}
+                    limit={8}
+                />
             </main>
         </div>
     );

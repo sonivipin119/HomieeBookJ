@@ -13,7 +13,11 @@ import Favourites from './Pages/Store/FavouriteList'
 import Bookings from './Pages/Store/Booking'
 import Pagetitle from './Utils/PageTitle'
 import { apiFetch } from './api/api';
+import PrivacyPolicy from './Utils/Privacy';
+import AboutUs from './Utils/AboutUs'
 import OAuthSuccess from "./Utils/OAuthSuccess";
+import ScrollToTop from './Components/ScrollToTop';
+import TermsAndConditions from './Pages/Terms/TermsAndConditions';
 import './App.css'
 
 function App() {
@@ -47,7 +51,6 @@ function App() {
                 setLoadingUser(false);
             })
     }, []);
-    // VERY IMPORTANT
     if (loadingUser) {
         return <div>Loading...</div>;
     }
@@ -55,6 +58,7 @@ function App() {
     <>
         <Navbar user = {user} setUser={setUser} />
         <Pagetitle />
+        <ScrollToTop />
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Login" element={<Login setUser={setUser} />} />
@@ -64,8 +68,6 @@ function App() {
                 element={<OAuthSuccess setUser={setUser} />}
             />
             <Route path="/properties/:id" element={<PropertyDetails user={user} />} />
-            {/*invalid path or unknown url go to "/" */}
-            <Route path="*" element={<Navigate to="/" replace />} />
 
             {user?.role === "USER" && (
                 <>
@@ -83,6 +85,11 @@ function App() {
                     <Route path="/host/edit-home/:id" element={<AddProperty key="edit" />}/>
                 </>
             )}
+
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/privacy" element={ <PrivacyPolicy /> } />
+            <Route path="/termService" element={ <TermsAndConditions/> }/>
+            <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <Footer />
     </>

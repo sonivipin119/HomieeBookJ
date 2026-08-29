@@ -15,6 +15,9 @@ import com.FullStack.HomieeBook.Repository.AmenitiesRepository;
 import com.FullStack.HomieeBook.Repository.OwnerInfoRepository;
 import com.FullStack.HomieeBook.Repository.PropertyRepo;
 import com.FullStack.HomieeBook.Repository.UserDetailsRepo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -66,11 +69,19 @@ public class PropertyService {
         return propertyRepo.save(property);
     }
 
-    public List<PropertyListResponseDto> getAllProperties() {
-        return propertyRepo.findAll()
-                .stream()
-                .map(propertyMapper::toListDto)
-                .toList();
+//    public List<PropertyListResponseDto> getAllProperties() {
+//        return propertyRepo.findAll()
+//                .stream()
+//                .map(propertyMapper::toListDto)
+//                .toList();
+//    }
+    public Page<PropertyListResponseDto> getAllProperties(int page, int size) {
+
+        Pageable pageable = PageRequest.of(page - 1, size);
+
+        return propertyRepo
+                .findAll(pageable)
+                .map(propertyMapper::toListDto);
     }
 
     public PropertyDetailsResponseDto getPropertyById(Long id) {

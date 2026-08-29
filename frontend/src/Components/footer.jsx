@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom';
 function footer(){
     return (
         <footer className=" w-full">
@@ -7,20 +7,20 @@ function footer(){
                     <div>
                         <h3 className="font-bold mb-2">USEFUL LINKS</h3>
                         <ul className="space-y-1">
-                            <li><a href="/about" className="hover:text-sky-300">About Us</a></li>
-                            <li><a href="/contact" className="hover:text-sky-300">Contact</a></li>
-                            <li><a href="/privacy" className="hover:text-sky-300">Privacy Policy</a></li>
-                            <li><a href="/termService" className="hover:text-sky-300">Terms of Service</a></li>
+                            <li><Link to="/about" className="hover:text-sky-300">About Us</Link></li>
+                            <li><Link to="/contact" className="hover:text-sky-300">Contact</Link></li>
+                            <li><Link to="/privacy" className="hover:text-sky-300">Privacy Policy</Link></li>
+                            <li><Link to="/termService" className="hover:text-sky-300">Terms of Service</Link></li>
                         </ul>
                     </div>
 
                     <div>
                         <h3 className="font-bold mb-2">SUPPORT</h3>
                         <ul className="space-y-1">
-                            <li><a href="/help" className="hover:text-sky-300">Help Center</a></li>
-                            <li><a href="/faq" className="hover:text-sky-300">FAQ</a></li>
+                            <li><Link to="/help" className="hover:text-sky-300">Help Center</Link></li>
+                            <li><Link to="/faq" className="hover:text-sky-300">FAQ</Link></li>
                             <li>
-                                <a href="/contact" className="hover:text-sky-300">Report a Problem</a>
+                                <Link to="/contact" className="hover:text-sky-300">Report a Problem</Link>
                             </li>
                         </ul>
                     </div>
@@ -51,28 +51,28 @@ function footer(){
                 </div>
 
                 <div className="flex gap-2 items-center mt-10 justify-center space-x-4">
-                    <a href="https://google.com" target="_blank" rel="noopener noreferrer">
+                    <Link to="https://google.com" target="_blank" rel="noopener noreferrer">
                         <img src="/google-symbol.png" alt="Google" className="h-8 w-8 hover:opacity-80"/>
-                    </a>
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                    </Link>
+                    <Link to="https://instagram.com" target="_blank" rel="noopener noreferrer">
                         <img src="/instagram.png" alt="Instagram" className="h-8 w-8 hover:opacity-80"/>
-                    </a>
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                    </Link>
+                    <Link to="https://facebook.com" target="_blank" rel="noopener noreferrer">
                         <img src="/facebook.png" alt="Facebook" className="h-8 w-8 hover:opacity-80"/>
-                    </a>
-                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                    </Link>
+                    <Link to="https://twitter.com" target="_blank" rel="noopener noreferrer">
                         <img src="/twitter.png" alt="Twitter" className="h-8 w-8 hover:opacity-80"/>
-                    </a>
-                    <a href="https://linkdin.com" target="_blank" rel="noopener noreferrer">
+                    </Link>
+                    <Link to="https://linkdin.com" target="_blank" rel="noopener noreferrer">
                         <img src="/linkdin.png" alt="linkdin"
                              className="h-10 w-10 text-sky-600 hover:opacity-80"/>
-                    </a>
-                    <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">
+                    </Link>
+                    <Link to="https://pinterest.com" target="_blank" rel="noopener noreferrer">
                         <img src="/pinterest.png" alt="pinterest" className="h-8 w-8 hover:opacity-80"/>
-                    </a>
-                    <a href="https://WeChat.com" target="_blank" rel="noopener noreferrer">
+                    </Link>
+                    <Link to="https://WeChat.com" target="_blank" rel="noopener noreferrer">
                         <img src="/wechat.png" alt="wechat" className="h-8 w-8 hover:opacity-80"/>
-                    </a>
+                    </Link>
                 </div>
             </nav>
         </footer>
