@@ -28,7 +28,7 @@ Check out the live version of HomieeBook here:
 
 ## 📸 Screenshots  
 
-![Homepage](https://github.com/sonivipin119/HomieeBook/blob/main/assets/Screenshot%202025-09-05%20100250.png)  
+![Homepage](https://raw.githubusercontent.com/sonivipin119/HomieeBookJ/main/frontend/src/assets/Screenshot%2025-09-05%100250.png)  
 ![Dashboard](https://github.com/sonivipin119/HomieeBook/blob/main/assets/Screenshot%202025-09-05%20100324.png) 
 ![SignUp/Login](https://github.com/sonivipin119/HomieeBook/blob/main/assets/Screenshot%202025-09-05%20100525.png)
 ![Favourite](https://github.com/sonivipin119/HomieeBook/blob/main/assets/Screenshot%202025-09-05%20100558.png)
