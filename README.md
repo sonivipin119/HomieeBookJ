@@ -18,7 +18,8 @@ Check out the live version of HomieeBook here:
 - 🏡 **Browse & Search Homes** – Explore available homes by location, type, or price range.  
 - 👤 **Guest & Host Roles** – Guests can book homes, while hosts can upload/manage their listings.  
 - 🖼 **Upload Home Photos** – Hosts can showcase property images and details for better visibility.  
-- 🔐 **User Authentication** – Secure login & signup system for safe access.  
+- 🔐 **User Authentication** – Secure login & signup system for safe access.
+- ⭐ **Real-Time Reviews** – Guests can submit and view property reviews in real time, helping users make informed booking decisions.
 - 📊 **Dashboard** – Manage bookings, reservations, and property details.  
 - 📱 **Responsive Design** – Works seamlessly on desktop and mobile devices.  
 - ⚡ **Fast & Modern UI** – Clean design with smooth user experience.  
@@ -45,31 +46,60 @@ Follow these steps to set up HomieeBook locally:
  git clone https://github.com/sonivipin119/HomieeBook.git
  cd HomieeBook
  ```
- Install dependencies:
+ ### Configure Backend
+
+ Open:
+
+ ```text
+ backend/src/main/resources/application.properties
+
+ server.port=${PORT_NUMBER}
+
+ spring.datasource.url=${MYSQL_DATABASE_URL}
+ spring.datasource.username=${MYSQL_DATABASE_USERNAME}
+ spring.datasource.password=${MYSQL_DATABASE_PASSWORD}
+
+ spring.jpa.hibernate.ddl-auto=update
+ spring.jpa.show-sql=true
+ spring.jpa.properties.hibernate.format_sql=true
+
+ # Google OAuth2
+ spring.security.oauth2.client.registration.google.client-id=${GOOGLE_CLIENT_ID}
+ spring.security.oauth2.client.registration.google.client-secret=${GOOGLE_CLIENT_SECRET}
+
+ # JWT
+ jwt.secret=${JWT_SECRET}
+
+ # Cloudinary
+ cloudinary.cloud-name=${CLOUDINARY_CLOUD_NAME}
+ cloudinary.api-key=${CLOUDINARY_API_KEY}
+ cloudinary.api-secret=${CLOUDINARY_API_SECRET}
  ```
+ Create Database
+ ```
+ CREATE DATABASE your_Db_name;
+ ```
+ Install Frontend dependencies:
+ ```
+ cd Frontend
  npm install
  ```
- 
- Create a .env file in the server directory and add the following:
- ```
- SESSION_SECRET=scr3t_k3y_here
- PORT=port_number_here
- GOOGLE_CLIENT_ID=your_google_client_id_here
- GOOGLE_CLIENT_SECRET=your_google_client_secret_here
- DB_PATH=your_database_connection_url_here
- CLOUDINARY_CLOUD_NAME=Cloudinary_cloud_name_here
- CLOUDINARY_API_KEY=Cloudinary_api_key_here
- CLOUDINARY_API_SECRET=Cloudinary_api_secret_here
- ```
- 
- Start the development server:
- ```
- npm start
- ```
 
+ Start the Backend server:
+ ```
+ mvn spring-boot:run
+ ```
+ Backend Start at:
+ ```
+ http://localhost:PORT_NUMBER
+ ```
+ Start the Frontend:
+ ```
+ npm run dev
+ ```
  Open in browser
  ```
- http://localhost:Port_Number
+ http://localhost:5173
  ```
 ---
 
@@ -80,6 +110,7 @@ Follow these steps to set up HomieeBook locally:
  - Filter/search by location & budget
  - Request/book a home
  - View booking history
+ - Post and view reviews
 
 - 🏠 Host User
  - Upload property details with images
@@ -116,11 +147,11 @@ There is a need for a **community-driven platform** that bridges this gap.
 
 ## 📌 Tech Stack  
 
-- **Frontend:** Html, Tailwind CSS
-- **Backend:** Node.js + Express.js  
-- **Database:** MongoDB  
+- **Frontend:** React.js, Tailwind CSS
+- **Backend:** Spring framework
+- **Database:** MySql  
 - **Authentication:** JWT / OAuth
-- **File Storage:** Cloudinary + Multer
+- **File Storage:** Cloudinary
 - **Email Service:** Email.js
 - **Hosting:** Vercel / Netlify 
 
